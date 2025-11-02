@@ -12,13 +12,15 @@ class TodoList:
 
     def remove_task(self, task_index):
         """Remove a task by index"""
-        # BUG 1: No bounds checking - will crash if index is out of range
-        del self.tasks[task_index]
-        print(f"Task at index {task_index} removed!")
-
+        if 0 <= task_index < len(self.tasks):
+            removed_task = self.tasks[task_index]
+            del self.tasks[task_index]
+            print(f"Task '{removed_task}' removed!")
+        else:
+            print(f"Error: Invalid index {task_index}. Please enter a valid task number.")
     def view_tasks(self):
         """Display all tasks"""
-        if len(self.tasks) = 0:  # BUG 2: Using = instead of ==
+        if len(self.tasks) == 0:  # BUG 2: Using = instead of ==
             print("No tasks in the list!")
         else:
             print("\nYour Todo List:")
