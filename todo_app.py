@@ -29,12 +29,15 @@ class TodoList:
 
     def mark_complete(self, task_index):
         """Mark a task as complete"""
-        # BUG 3: Logic error - doesn't actually mark anything, just prints
-        print(f"Task {task_index} marked as complete!")
+        if 0 <= task_index < len(self.tasks):
+            self.completed[task_index] = True
+            print(f"Task '{self.tasks[task_index]}' marked as complete!")
+        else:
+            print(f"Error: Invalid index {task_index}. Please enter a valid task number.")
 
     def get_task_count(self):
         """Return the number of tasks"""
-        return len(self.task)  # BUG 4: Typo - should be self.tasks
+        return len(self.tasks)
 
 def main():
     todo = TodoList()
